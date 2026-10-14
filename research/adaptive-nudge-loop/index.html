@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Adaptive Nudge Loop | Hans Lee’s Research</title><meta name="description" content="Explore Hans Lee’s Monash research prototype through an eight-step synthetic walkthrough of traceable, bounded adaptive messaging."><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+
+  /* Committed light design: presentation piece, white ground, every colour explicit. */
+  :root{
+    --page:#ffffff;
+    --raise:#f7f9fc;
+    --ink:#111a2b;
+    --muted:#5a6780;
+    --line:#e3e7ef;
+    --line-firm:#d2d8e4;
+    --accent:#2457d6;
+    --accent-soft:#eef3ff;
+    --rail-idle:#dbe0ea;
+  }
+  /* app tokens, lifted from monitor.html (color-scheme:light) */
+  .app{
+    --bg:#f3f5f8; --card:#fff; --aink:#172033; --amuted:#667085; --aline:#dfe3ea;
+    --blue:#2457d6; --blue-soft:#eef4ff; --green:#167a50; --green-soft:#eaf8f1;
+    --amber:#9a5b00; --amber-soft:#fff4dc; --shadow:0 1px 3px rgba(16,24,40,.08);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--page);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:36px 22px 64px}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 16px;
+  }
+  h1{
+    font-family:"Instrument Serif",Georgia,serif;font-weight:400;
+    font-size:clamp(30px,4.6vw,52px);line-height:1.1;letter-spacing:-.015em;
+    margin:0 0 14px;text-wrap:balance;max-width:19ch;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .standfirst{margin:0 0 30px;max-width:60ch;font-size:16.5px;color:var(--muted)}
+
+  /* ---------- device ---------- */
+  .device{
+    border-radius:15px;overflow:hidden;border:1px solid var(--line-firm);
+    background:var(--raise);
+    box-shadow:0 1px 2px rgba(17,26,43,.05),0 14px 34px -14px rgba(17,26,43,.20);
+  }
+  .chrome{
+    display:flex;align-items:center;gap:11px;padding:9px 13px;
+    background:var(--raise);border-bottom:1px solid var(--line);
+  }
+  .lights{display:flex;gap:6px;flex:none}
+  .lights i{width:10px;height:10px;border-radius:50%;background:var(--rail-idle);display:block}
+  .omni{
+    flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:7px;
+    padding:4px 11px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;
+    color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .synthflag{
+    flex:none;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;font-weight:600;
+    letter-spacing:.07em;text-transform:uppercase;color:#9a5b00;background:#fff4dc;
+    border:1px solid #ecd9ab;padding:3px 8px;border-radius:999px;
+  }
+
+  .app{
+    background:var(--bg);color:var(--aink);height:508px;overflow:hidden;
+    position:relative;font-size:14px;
+  }
+  .screen{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;pointer-events:none}
+  .screen.on{opacity:1;pointer-events:auto;overflow-y:auto}
+  .app-scroll{transition:transform .7s cubic-bezier(.4,0,.2,1)}
+
+  .app header{
+    background:rgba(255,255,255,.94);border-bottom:1px solid var(--aline);padding:9px 17px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:780;font-size:14px}
+  .mark{width:27px;height:27px;border-radius:8px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
+  .top-actions{display:flex;gap:7px}
+  .linkbtn,.ghost{border:1px solid var(--aline);background:#fff;border-radius:9px;padding:6px 11px;font-size:12.5px;font-weight:680;color:var(--aink)}
+  .app main{padding:17px}
+  .intro h2{font-size:21px;letter-spacing:-.4px;margin:0 0 4px;font-weight:790}
+  .intro p{color:var(--amuted);margin:0;font-size:13px}
+
+  .panelcard{background:var(--card);border:1px solid var(--aline);border-radius:14px;padding:13px;box-shadow:var(--shadow)}
+  .field label{display:block;font-size:11.5px;font-weight:720;color:#475467;margin:0 0 5px}
+  .fake-input,.fake-select{border:1px solid #cbd1dc;background:#fff;border-radius:9px;padding:8px 11px;font-size:13px;transition:border-color .2s,box-shadow .2s}
+  .fake-select{display:flex;justify-content:space-between;align-items:center}
+  .fake-select::after{content:"⌄";color:var(--amuted);font-size:15px;line-height:1}
+  .ph{color:var(--amuted)}
+  .lit{border-color:var(--blue)!important;box-shadow:0 0 0 3px rgba(36,87,214,.13)}
+
+  /* ---------- intake screen ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:11px}
+  .rxbox{margin-top:11px}
+  .rxtext{
+    border:1px solid #cbd1dc;background:#fff;border-radius:9px;padding:10px 11px;font-size:13px;
+    line-height:1.5;min-height:62px;
+  }
+  .docchip{
+    margin-top:9px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--aline);
+    background:#fff;border-radius:9px;padding:6px 10px;font-size:12px;color:var(--amuted);
+  }
+  .docchip b{color:var(--aink);font-weight:700}
+  .submit{
+    margin-top:12px;display:inline-block;background:var(--blue);color:#fff;border-radius:10px;
+    padding:9px 15px;font-size:13px;font-weight:720;
+  }
+  .llmout{margin-top:11px;border:1px solid var(--aline);border-radius:13px;background:#fff;overflow:hidden}
+  .llmhead{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;
+    background:var(--blue-soft);border-bottom:1px solid var(--aline);
+  }
+  .llmhead .sig{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:600;color:var(--blue)}
+  .llmhead em{font-style:normal;font-size:11px;color:var(--amuted)}
+  .kv{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:11px 12px}
+  .kv div span{
+    display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;
+    color:var(--amuted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;
+  }
+  .kv div strong{display:block;font-size:12.5px;margin-top:2px;font-weight:740}
+  .nrow{border-top:1px solid #edf0f4;padding:10px 12px}
+  .nrow .at{font-size:12.5px;font-weight:740}
+  .nrow .mb{font-size:12px;color:var(--amuted);margin-top:3px;line-height:1.45}
+  .tags{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+  .gate{
+    display:flex;align-items:center;gap:7px;padding:9px 12px;background:var(--green-soft);
+    border-top:1px solid var(--aline);font-size:12px;color:var(--green);font-weight:660;
+  }
+
+  /* ---------- monitor screen ---------- */
+  .selector{margin-top:14px;display:grid;grid-template-columns:1fr 1.5fr;gap:13px;align-items:end}
+  .patient-head{margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .identity{display:flex;align-items:center;gap:11px}
+  .avatar{width:38px;height:38px;border-radius:50%;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:15px}
+  .patient-name{font-size:16px;font-weight:780}
+  .patient-meta{font-size:12.5px;color:var(--amuted);margin-top:1px}
+  .state{padding:5px 9px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:11px;font-weight:760}
+  .adapt-summary{
+    margin-top:10px;background:var(--card);border:1px solid var(--aline);border-radius:13px;
+    padding:11px 13px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr)) auto;gap:10px;align-items:center;
+  }
+  .adapt-stat span{display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;color:var(--amuted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+  .adapt-stat strong{display:block;font-size:13.5px;margin-top:3px;font-weight:750}
+  .adapt-stat strong.pending{color:var(--amuted);font-weight:600}
+  .adapt-stat strong.fresh{color:var(--amber)}
+  .adapt-panel{margin-top:9px;background:var(--card);border:1px solid var(--aline);border-radius:13px;padding:13px}
+  .adapt-panel h3{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--amuted);margin:0 0 9px}
+  .adapt-evidence{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px}
+  .evidence-card{border:1px solid var(--aline);border-radius:9px;padding:8px 9px;background:var(--blue-soft)}
+  .evidence-card strong{display:block;font-size:15px;font-weight:780;font-variant-numeric:tabular-nums}
+  .evidence-card span{display:block;font-size:11px;color:var(--amuted);margin-top:2px}
+  .trace{display:grid;gap:7px}
+  .trace-row{display:grid;grid-template-columns:15px 1fr;gap:9px;align-items:start;border:1px solid var(--aline);border-radius:9px;padding:9px 11px;background:#fafbfc;transition:box-shadow .3s,border-color .3s}
+  .trace-row.model{background:var(--blue-soft)}
+  .trace-row.applied{background:var(--green-soft)}
+  .trace-row.spot{border-color:var(--blue);box-shadow:0 0 0 3px rgba(36,87,214,.15)}
+  .trace-dot{width:9px;height:9px;border-radius:50%;background:var(--blue);margin-top:5px}
+  .trace-row.applied .trace-dot{background:var(--green)}
+  .sig{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:600}
+  .trace-row p{margin:3px 0 0;font-size:12px;color:var(--amuted);line-height:1.45}
+  .trace-row code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;background:rgba(23,32,51,.07);padding:1px 5px;border-radius:4px;color:#2f3c56}
+  .planrow{margin-top:9px;background:var(--card);border:1px solid var(--aline);border-radius:13px;padding:11px 13px;font-weight:700;font-size:13px;display:flex;gap:8px;align-items:center}
+  .planrow::before{content:"›";color:var(--amuted);font-size:16px}
+  .week{margin-top:9px;display:grid;gap:8px}
+  .nudge{background:var(--card);border:1px solid var(--aline);border-radius:13px;padding:11px 13px;transition:opacity .4s,border-color .4s}
+  .nudge-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .message-title{font-weight:740;font-size:13px}
+  .message-preview{font-size:12px;color:var(--amuted);margin-top:2px}
+  .slot-time{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;border:1px solid #cbd1dc;border-radius:8px;padding:5px 9px;background:#fff;flex:none}
+  .chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+  .chip{font-size:10px;font-weight:750;padding:4px 7px;border-radius:999px;background:#f0f2f5;color:#475467}
+  .chip.ok{background:var(--green-soft);color:var(--green)}
+  .chip.warn{background:var(--amber-soft);color:var(--amber)}
+  .chip.info{background:var(--blue-soft);color:var(--blue)}
+  .nudge.locked{opacity:.62}
+  .nudge.removed{opacity:.32}
+  .strike{text-decoration:line-through}
+
+  /* ---------- whatsapp phone ---------- */
+  .phone{
+    position:absolute;right:22px;bottom:-560px;width:268px;z-index:35;
+    border-radius:26px;overflow:hidden;background:#0b141a;color:#e9edef;
+    border:5px solid #1f2c33;box-shadow:0 18px 40px -12px rgba(11,20,26,.55);
+    transition:bottom .62s cubic-bezier(.22,1,.36,1);
+  }
+  .phone{visibility:hidden}.phone.up{bottom:-104px;visibility:visible}
+  .wa-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 13px 3px;font-size:11px;font-weight:600}
+  .wa-head{display:flex;align-items:center;gap:8px;padding:7px 11px 9px;border-bottom:1px solid #22303a}
+  .wa-ava{width:28px;height:28px;border-radius:50%;background:#f22f46;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff;flex:none}
+  .wa-name{font-size:13px;font-weight:700;line-height:1.2}
+  .wa-sub{font-size:10px;color:#8696a0}
+  .wa-body{padding:10px 9px 16px;background:#0b141a;min-height:250px}
+  .bubble{background:#1f2c33;border-radius:9px;padding:8px 9px 5px;font-size:11.5px;line-height:1.45}
+  .bubble+.bubble{margin-top:7px}
+  .preview{background:#182229;border-radius:7px;overflow:hidden;margin-bottom:7px;display:grid;grid-template-columns:66px 1fr}
+  .thumb{background:linear-gradient(140deg,#3a5a6b,#6e8b74 55%,#c2b280);min-height:56px}
+  .prev-t{padding:6px 8px}
+  .prev-t b{display:block;font-size:10.5px;line-height:1.3;color:#e9edef}
+  .prev-t span{display:block;font-size:9.5px;color:#8696a0;margin-top:2px}
+  .bubble p{margin:0 0 7px}
+  .bubble p:last-of-type{margin-bottom:0}
+  .wa-link{color:#53bdeb;word-break:break-all}
+  .wa-meta{text-align:right;font-size:9px;color:#8696a0;margin-top:3px}
+  .tick{color:#53bdeb;letter-spacing:-2px}
+
+  .cursor{position:absolute;top:0;left:0;width:22px;height:22px;z-index:40;pointer-events:none;transform:translate(90px,130px);transition:transform 820ms cubic-bezier(.36,.06,.2,1);filter:drop-shadow(0 2px 5px rgba(10,18,35,.4))}
+  .cursor svg{display:block;width:100%;height:100%}
+  .ripple-pos{position:absolute;top:0;left:0;z-index:39;pointer-events:none;transform:translate(90px,130px);transition:transform 820ms cubic-bezier(.36,.06,.2,1)}
+  .ripple{display:block;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:2px solid var(--blue);opacity:0}
+  .ripple.go{animation:ping .5s ease-out}
+  @keyframes ping{0%{opacity:.85;transform:scale(.25)}100%{opacity:0;transform:scale(1)}}
+
+  .readout{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr) 258px;gap:32px;align-items:start}
+  .caption-n{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--accent);margin:0 0 7px}
+  .caption-t{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:25px;line-height:1.22;margin:0 0 8px;text-wrap:balance}
+  .caption-b{margin:0;color:var(--muted);font-size:14.5px;max-width:56ch}
+  .rail{display:grid;gap:2px;margin:0;padding:0;list-style:none}
+  .rail button{width:100%;display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:center;background:none;border:0;border-left:2px solid var(--rail-idle);padding:7px 0 7px 13px;text-align:left;cursor:pointer;color:var(--muted);font:inherit;font-size:12.5px;transition:color .25s,border-color .25s}
+  .rail button:hover{color:var(--ink)}
+  .rail button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .rail .n{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;opacity:.75}
+  .rail li.on button{color:var(--ink);border-color:var(--accent);font-weight:640}
+  .controls{display:flex;gap:9px;align-items:center;margin-top:16px;flex-wrap:wrap}
+  .ctrl{border:1px solid var(--line-firm);background:#fff;color:var(--ink);border-radius:8px;padding:6px 13px;font:inherit;font-size:12.5px;font-weight:640;cursor:pointer}
+  .ctrl:hover{border-color:var(--accent)}
+  .ctrl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .ctrl[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+
+  footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;max-width:72ch}
+  footer p{margin:0 0 7px}
+  footer strong{color:var(--ink);font-weight:660}
+
+  @media (max-width:880px){
+    .readout{grid-template-columns:1fr;gap:22px}
+    .adapt-summary{grid-template-columns:repeat(3,1fr)}
+    .adapt-evidence,.kv{grid-template-columns:repeat(2,1fr)}
+    .grid2{grid-template-columns:1fr}
+    .app{height:448px}
+    .synthflag{display:none}
+    .phone{width:224px;right:10px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cursor,.ripple-pos{transition:none}
+    .cursor,.ripple-pos{display:none}
+    .app-scroll,.screen,.phone{transition:none}
+  }
+
+.portfolio-nav{display:flex;justify-content:space-between;gap:18px;margin-bottom:32px;font-size:12px}.portfolio-nav a,.contact-research{color:var(--accent);text-decoration:none;font-weight:600}.portfolio-nav a:hover,.contact-research:hover{text-decoration:underline}.demo-note{padding:12px 15px;border:1px solid var(--line);background:var(--raise);border-radius:9px;color:var(--muted);font-size:12px;margin:0 0 18px}.research-notes{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}.research-notes h2{font-family:"Instrument Serif",Georgia,serif;font-size:34px;line-height:1.15;font-weight:400;margin:0 0 14px}.study-intro{max-width:76ch;color:var(--muted);font-size:15px}.study-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0}.study-grid article{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--raise)}.study-number{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;color:var(--accent)}.study-grid h3,.findings h3,.contribution h3{font-size:16px;margin:12px 0 8px}.study-grid p,.findings p,.contribution p{font-size:14px;line-height:1.65;color:var(--muted)}.findings{padding:20px 24px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0}.findings h3{margin-top:0}.findings strong{color:var(--ink)}.contribution{margin:28px 0 18px}.stack{font-family:"IBM Plex Mono",monospace;font-size:11px!important}.contact-research{display:inline-block;padding:10px 0}a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:880px){.synthflag{display:inline-block;font-size:8px;padding:3px 5px}.chrome{gap:7px}.omni{font-size:10px}.study-grid{grid-template-columns:1fr}.app{height:520px}.research-notes h2{font-size:29px}}
+</style></head><body>
+<div class="wrap">
+  <nav class="portfolio-nav" aria-label="Research navigation"><a href="https://stevenleehans.github.io/#projects">← Hans Lee’s portfolio</a><a href="#study">About the research ↓</a></nav>
+  <p class="eyebrow">Hans Lee · Monash Master’s research · synthetic walkthrough</p>
+  <h1>The clinician prescribes once. The system <em>delivers, watches, and adapts</em> — inside the limits they set.</h1>
+  <p class="standfirst">This synthetic walkthrough illustrates a clinician-approved prescription becoming a message schedule, interaction evidence informing a frequency suggestion, and deterministic rules deciding whether a change is allowed. Only future unsent messages can change.</p>
+  <p class="demo-note">An animated explanation of the prototype. All profiles, messages, counts and model scores shown here are synthetic examples. Use the eight step buttons to explore at your own pace. You can scroll inside the preview to see longer panels.</p>
+
+  <div class="device">
+    <div class="chrome">
+      <div class="lights"><i></i><i></i><i></i></div>
+      <div class="omni" id="omni">Research prototype · Intake</div>
+      <div class="synthflag">Synthetic data</div>
+    </div>
+
+    <div class="app">
+      <!-- ============ INTAKE ============ -->
+      <div class="screen" id="screenIntake">
+        <header>
+          <div class="brand"><span class="mark">W</span><span>Lifestyle care intake</span></div>
+          <div class="top-actions"><span class="ghost">Sign out</span></div>
+        </header>
+        <main>
+          <div class="intro">
+            <h2>Provide a prescription</h2>
+            <p>Enter the patient and the prescription. The system prepares the first week for your review.</p>
+          </div>
+
+          <div class="panelcard" style="margin-top:13px">
+            <div class="grid2" style="margin-top:0">
+              <div class="field"><label>Full name</label><div class="fake-input">Demo Patient</div></div>
+              <div class="field"><label>WhatsApp number</label><div class="fake-input">+61 4•• ••• •••</div></div>
+            </div>
+            <div class="rxbox field">
+              <label>Prescription</label>
+              <div class="rxtext">Increase daily walking. Target 1000 steps per day, building gradually over the review period. Encourage reflection rather than instruction.</div>
+              <div class="docchip">📎 <b>prescription-scan.jpg</b> · attached, authoritative when present</div>
+            </div>
+            <div class="submit" id="tSubmit">Prepare message plan</div>
+          </div>
+
+          <div class="llmout" id="llmOut" style="display:none">
+            <div class="llmhead">
+              <span class="sig">gemini-2.5-flash · single batch call at intake</span>
+              <em>week 1 only</em>
+            </div>
+            <div class="kv">
+              <div><span>pillar</span><strong>physical_activity</strong></div>
+              <div><span>category</span><strong>increase</strong></div>
+              <div><span>frequency</span><strong>2 / week</strong></div>
+              <div><span>duration</span><strong>12 weeks</strong></div>
+            </div>
+            <div class="nrow">
+              <div class="at">Increase daily steps to 1000</div>
+              <div class="mb">“Hi Demo Patient, How are you feeling about increasing your daily steps to 1000? Reflect on your progress and celebrate your efforts. You're doing great!”</div>
+              <div class="tags"><span class="chip info">reflection</span><span class="chip">encouraging</span><span class="chip">Mon 19:00</span></div>
+            </div>
+            <div class="nrow">
+              <div class="at">Increase daily steps to 1000</div>
+              <div class="mb">“Your prescription includes increasing daily steps to 1000. Plan your activity to meet this goal today.”</div>
+              <div class="tags"><span class="chip info">reminder</span><span class="chip">neutral_informational</span><span class="chip">Thu 19:00</span></div>
+            </div>
+            <div class="gate">✓ Validation gate passed · 5 enum fields checked · batch accepted</div>
+          </div>
+        </main>
+      </div>
+
+      <!-- ============ MONITOR ============ -->
+      <div class="screen" id="screenMonitor">
+        <div class="app-scroll" id="scroll">
+          <header>
+            <div class="brand"><span class="mark">W</span><span>Lifestyle care overview</span></div>
+            <div class="top-actions"><span class="linkbtn">Accounts</span><span class="ghost">Sign out</span></div>
+          </header>
+          <main>
+            <div class="intro">
+              <h2>Patient overview</h2>
+              <p>Approve the prescription and plan. Review what the system delivered and how it adapted.</p>
+            </div>
+
+            <div class="panelcard selector">
+              <div class="field"><label>Find patient</label><div class="fake-input ph">Search name, phone, or ID</div></div>
+              <div class="field"><label>Patient</label><div class="fake-select" id="tSelect"><span>Demo Patient</span></div></div>
+            </div>
+
+            <div class="panelcard patient-head">
+              <div class="identity">
+                <div class="avatar">D</div>
+                <div>
+                  <div class="patient-name">Demo Patient</div>
+                  <div class="patient-meta">Synthetic profile · week 11 of 12 · physical activity</div>
+                </div>
+              </div>
+              <span class="state">Active</span>
+            </div>
+
+            <div class="adapt-summary">
+              <div class="adapt-stat"><span>Planned</span><strong>2 / week</strong></div>
+              <div class="adapt-stat"><span>Delivered</span><strong>22</strong></div>
+              <div class="adapt-stat"><span>Interactions</span><strong>5</strong></div>
+              <div class="adapt-stat"><span>Media</span><strong>Video</strong></div>
+              <div class="adapt-stat"><span>Delivery time</span><strong>19:00</strong></div>
+              <div class="adapt-stat"><span>Schedule suggestion</span><strong id="statSuggest" class="pending">Awaiting evidence</strong></div>
+              <span class="ghost" id="tHistory">View adaptation history</span>
+            </div>
+
+            <section class="adapt-panel" id="panel" style="display:none">
+              <h3>Delivery and interaction evidence · weeks 1–11</h3>
+              <div class="adapt-evidence">
+                <div class="evidence-card"><strong>22</strong><span>Confirmed deliveries</span></div>
+                <div class="evidence-card"><strong>5</strong><span>Tracked visits</span></div>
+                <div class="evidence-card"><strong>14</strong><span>Read unknown</span></div>
+                <div class="evidence-card"><strong>2</strong><span>Recent closed, none</span></div>
+              </div>
+              <h3>Decision trace</h3>
+              <div class="trace">
+                <div class="trace-row model" id="rowModel">
+                  <span class="trace-dot"></span>
+                  <div>
+                    <span class="sig">frequency_model_recommendation</span>
+                    <p>Scored every permitted frequency: <code>1 → 0.312</code> <code>2 → 0.241</code> <code>3 → 0.186</code>. Selected 1 per week under <code>lowest_near_best_candidate</code>.</p>
+                  </div>
+                </div>
+                <div class="trace-row applied" id="rowPolicy">
+                  <span class="trace-dot"></span>
+                  <div>
+                    <span class="sig">adaptive_policy_applied</span>
+                    <p>Two consecutive closed windows with no observable interaction satisfy the decrease gate. One step down, inside the clinician envelope. Applied to future unsent rows only.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div class="planrow" id="tPlan">Review plan or adjust future messages</div>
+
+            <div class="week" id="week" style="display:none">
+              <article class="nudge locked">
+                <div class="nudge-top">
+                  <div>
+                    <div class="message-title">Increase daily steps to 1000</div>
+                    <div class="message-preview">Monday · delivered · tracked WHO video</div>
+                  </div>
+                  <span class="slot-time">19:00</span>
+                </div>
+                <div class="chips"><span class="chip ok">Delivered</span><span class="chip">Read unknown</span><span class="chip info">1 visit</span><span class="chip">History locked</span></div>
+              </article>
+              <article class="nudge" id="slotFuture">
+                <div class="nudge-top">
+                  <div>
+                    <div class="message-title">Increase daily steps to 1000</div>
+                    <div class="message-preview">Thursday · future occurrence</div>
+                  </div>
+                  <span class="slot-time">19:00</span>
+                </div>
+                <div class="chips" id="futureChips"><span class="chip">Scheduled</span><span class="chip info">Auto media</span></div>
+              </article>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- ============ WHATSAPP ============ -->
+      <div class="phone" id="phone" aria-hidden="true">
+        <div class="wa-bar"><span>21:54</span><span>▮▮▯ 80</span></div>
+        <div class="wa-head">
+          <div class="wa-ava">◉</div>
+          <div><div class="wa-name">Twilio</div><div class="wa-sub">Business account</div></div>
+        </div>
+        <div class="wa-body">
+          <div class="bubble">
+            <p>Your prescription includes increasing daily steps to 1000. Plan your activity to meet this goal today.</p>
+            <p>Reply STOP to stop receiving messages.</p>
+            <div class="wa-meta">23:10</div>
+          </div>
+          <div class="bubble">
+            <div class="preview">
+              <div class="thumb"></div>
+              <div class="prev-t"><b>Let's be active for health for all</b><span>Walk, cycle, skip and swi…</span><span>Illustrative tracked resource</span></div>
+            </div>
+            <p>Hi Demo Patient, How are you feeling about increasing your daily steps to 1000? Reflect on your progress and celebrate your efforts. You're doing great!</p>
+            <p>A short WHO educational video encouraging regular movement and small, achievable activity goals.</p>
+            <p>Every Move Counts — World Health Organization<br><span class="wa-link">example.org/tracked-resource</span></p>
+            <p>Reply STOP to stop receiving messages.</p>
+            <div class="wa-meta">23:18 <span class="tick">✓✓</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ripple-pos" id="ripplePos"><span class="ripple" id="ripple"></span></div>
+      <div class="cursor" id="cursor" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 2.5 19 12.2l-6.1.9 3.2 6.6-2.5 1.2-3.2-6.6-4.4 4.3z" fill="#fff" stroke="#172033" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="readout" aria-label="Walkthrough steps">
+    <div>
+      <p class="caption-n" id="capN">STEP 1 / 8</p>
+      <h2 class="caption-t" id="capT">A prescription goes in.</h2>
+      <p class="caption-b" id="capB">The clinician enters the patient and the prescription, and can attach the scanned original. That is the whole input.</p>
+      <div class="controls">
+        <button class="ctrl" id="toggle" type="button">Pause</button>
+        <button class="ctrl" id="restart" type="button">Restart</button>
+        <button class="ctrl" id="sound" type="button" aria-pressed="false">🔇 Sound off</button>
+      </div>
+    </div>
+    <ul class="rail" id="rail"></ul>
+  </div>
+
+  <footer>
+    <p><strong>What this is.</strong> A research prototype built for a Monash Master of Data Science minor thesis on the technical feasibility of closed-loop adaptive messaging. The walkthrough illustrates one synthetic adaptation decision. Its example scores and counts are separate from the thesis evaluation results below.</p>
+    <p><strong>What it is not.</strong> All profiles, interaction histories and figures shown are synthetic, and patient names are placeholders. The system has not been evaluated with patients and makes no claim about adherence, behaviour change, or clinical benefit. Delivery, reads, visits and replies are interaction evidence only — a missing read receipt is recorded as unknown, never as unread.</p>
+  </footer>
+  <section id="study" class="research-notes" aria-labelledby="study-title">
+    <p class="eyebrow">THE RESEARCH BEHIND THE WALKTHROUGH</p>
+    <h2 id="study-title">Can an adaptive messaging loop be built, traced and tested?</h2>
+    <p class="study-intro">I designed and implemented the prototype, then evaluated its technical behaviour using controlled synthetic profiles and scenarios. The study follows the full chain from prescription and approval to message scheduling, feedback and bounded frequency changes.</p>
+    <div class="study-grid">
+      <article><span class="study-number">01 / TRACEABILITY</span><h3>Explain every change</h3><p>Link prescriptions, approvals, deliveries, feedback, model recommendations and applied decisions. Preserve the sent history and record why a proposed change was accepted, rejected or held.</p></article>
+      <article><span class="study-number">02 / ADAPTATION</span><h3>Test the policy, not just the model</h3><p>Compare one to three messages per week using fixed schedules, preset rules and model-assisted decisions. The logistic model estimates a reply or tracked-link visit within 24 hours after confirmed delivery. This is an interaction proxy.</p></article>
+      <article><span class="study-number">03 / AUTOMATION</span><h3>Keep human approval explicit</h3><p>Separate automated scheduling and evidence handling from clinician approval. Check the implemented responsibilities and failure cases through local tests; clinician workload reduction was not measured.</p></article>
+    </div>
+    <div class="findings"><h3>What the evaluation found</h3><p>The model predicted the synthetic interaction proxy better than a constant-rate benchmark: test Brier score <strong>0.137 versus 0.172</strong> (lower is better). That prediction gain did not produce a consistent efficiency advantage over two messages per week or preset rules. The model-assisted policy usually selected the minimum frequency.</p><p>The thesis reports <strong>269 automated tests passed</strong> and separates recommendations from applied changes. These results support bounded technical feasibility under the tested assumptions. They do not establish adherence, behaviour change, clinical benefit, real-user preference matching, or a complete live adaptive loop.</p></div>
+    <div class="contribution"><h3>What I built</h3><p>The portal and APIs, workflow definitions, synthetic data generator, logistic-regression training and JavaScript inference, deterministic adaptation rules, schedule writer, audit records and automated tests.</p><p class="stack">JavaScript · Python · n8n · PostgreSQL / Supabase · Gemini · Twilio / WhatsApp · Vercel</p></div>
+    <a class="contact-research" href="mailto:stevenleehans@yahoo.com?subject=Adaptive%20nudge%20loop%20research">Discuss the research with Hans ↗</a>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var cursor=$("cursor"),ripple=$("ripple"),ripplePos=$("ripplePos"),app=document.querySelector(".app"),
+      scroll=$("scroll"),panel=$("panel"),week=$("week"),suggest=$("statSuggest"),rail=$("rail"),
+      capN=$("capN"),capT=$("capT"),capB=$("capB"),toggle=$("toggle"),restart=$("restart"),soundBtn=$("sound"),
+      slotFuture=$("slotFuture"),futureChips=$("futureChips"),rowModel=$("rowModel"),rowPolicy=$("rowPolicy"),
+      omni=$("omni"),sIntake=$("screenIntake"),sMonitor=$("screenMonitor"),llmOut=$("llmOut"),phone=$("phone");
+
+  var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var URL_IN="Research prototype · Intake",
+      URL_MON="Research prototype · Monitor";
+
+  var scenes=[
+    {rail:"Prescription in",screen:"intake",url:URL_IN,target:"tSubmit",hold:3900,
+     t:"A prescription goes in.",
+     b:"The clinician enters the patient and the prescription, and can attach the scanned original. That is the whole input."},
+    {rail:"One LLM call",screen:"intake",url:URL_IN,target:null,hold:5200,
+     t:"One language-model call, then the gate closes.",
+     b:"Gemini turns the prescription into a dated first week using locked enum tokens. A deterministic gate checks every field — any violation rejects the whole batch and writes nothing. It is never called again in the delivery path."},
+    {rail:"Message delivered",screen:"intake",url:URL_IN,target:null,hold:5600,
+     t:"What a scheduled message looks like.",
+     b:"The example shows a scheduled WhatsApp message with an educational resource behind a tracked link. In the prototype, visits can become interaction evidence and messages include an opt-out."},
+    {rail:"Eleven weeks on",screen:"monitor",url:URL_MON,target:"tSelect",hold:4600,
+     t:"Eleven weeks later.",
+     b:"Twenty-two messages delivered, five tracked interactions, fourteen with no read receipt — recorded as unknown, never as unread."},
+    {rail:"Model suggests frequency",screen:"monitor",url:URL_MON,target:null,hold:4800,
+     t:"The model scores the permitted frequencies.",
+     b:"Interaction held up for most of the run. In the most recent window two consecutive 24-hour periods closed with nothing observed, and the model proposes sending less often."},
+    {rail:"Open the trace",screen:"monitor",url:URL_MON,target:"tHistory",hold:4400,
+     t:"The recommendation and the decision are separate records.",
+     b:"What the model scored, and what the system was permitted to do about it, are never written as one event."},
+    {rail:"Rules decide",screen:"monitor",url:URL_MON,target:null,hold:4400,
+     t:"A prediction is not permission.",
+     b:"Deterministic rules hold the change to one step per week, inside the clinician's approved range. Silence can never raise frequency."},
+    {rail:"Future only",screen:"monitor",url:URL_MON,target:"tPlan",hold:4800,
+     t:"Sent history never moves.",
+     b:"Thursday's unsent message is withdrawn. Monday's delivered message, and its evidence, stay exactly as they were."}
+  ];
+
+  scenes.forEach(function(s,n){
+    var li=document.createElement("li"),b=document.createElement("button");
+    b.type="button";
+    b.innerHTML='<span class="n">'+String(n+1).padStart(2,"0")+'</span><span>'+s.rail+'</span>';
+    b.addEventListener("click",function(){stop();jump(n)});
+    li.appendChild(b);rail.appendChild(li);
+  });
+  var railItems=rail.querySelectorAll("li");
+
+  /* ---- audio: synthesised, armed by the toggle click ---- */
+  var actx=null,soundOn=false;
+  soundBtn.addEventListener("click",function(){
+    soundOn=!soundOn;
+    soundBtn.setAttribute("aria-pressed",String(soundOn));
+    soundBtn.textContent=soundOn?"🔊 Sound on":"🔇 Sound off";
+    if(soundOn&&!actx){
+      try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){actx=null}
+    }
+    if(soundOn&&actx&&actx.state==="suspended")actx.resume();
+    if(soundOn)chime();
+  });
+  function blip(at,freq,dur){
+    var o=actx.createOscillator(),g=actx.createGain();
+    o.type="sine";o.frequency.setValueAtTime(freq,at);
+    g.gain.setValueAtTime(0,at);
+    g.gain.linearRampToValueAtTime(.22,at+.012);
+    g.gain.exponentialRampToValueAtTime(.0001,at+dur);
+    o.connect(g);g.connect(actx.destination);o.start(at);o.stop(at+dur+.02);
+  }
+  function chime(){
+    if(!soundOn||!actx||reduced)return;
+    var t=actx.currentTime+.02;
+    blip(t,1244.5,.16);      /* D#6 */
+    blip(t+.13,1661.2,.26);  /* G#6 */
+  }
+
+  function moveTo(id){
+    if(reduced||!id)return;
+    var el=$(id);if(!el)return;
+    var a=app.getBoundingClientRect(),r=el.getBoundingClientRect();
+    var x=r.left-a.left+Math.min(r.width*0.5,120),y=r.top-a.top+r.height*0.55;
+    cursor.style.transform="translate("+x+"px,"+y+"px)";
+    ripplePos.style.transform="translate("+x+"px,"+y+"px)";
+  }
+  function click(){
+    if(reduced)return;
+    ripple.classList.remove("go");void ripple.offsetWidth;ripple.classList.add("go");
+  }
+
+  function reset(){
+    panel.style.display="none";week.style.display="none";llmOut.style.display="none";
+    phone.classList.remove("up");
+    suggest.textContent="Awaiting evidence";suggest.className="pending";
+    rowModel.classList.remove("spot");rowPolicy.classList.remove("spot");
+    slotFuture.classList.remove("removed");
+    futureChips.innerHTML='<span class="chip">Scheduled</span><span class="chip info">Auto media</span>';
+    $("tSelect").classList.remove("lit");
+    scroll.style.transform="translateY(0)";
+    sIntake.scrollTop=0;sMonitor.scrollTop=0;
+  }
+
+  var i=0,timer=null,playing=!reduced,aimT=null,clickT=null,chimeT=null;
+
+  function apply(n){
+    reset();
+    var s=scenes[n];
+
+    sIntake.classList.toggle("on",s.screen==="intake");
+    sMonitor.classList.toggle("on",s.screen==="monitor");
+    omni.textContent=s.url;
+
+    if(n>=1)llmOut.style.display="";
+    if(n===2){
+      phone.classList.add("up");
+      clearTimeout(chimeT);
+      if(n===2)chimeT=setTimeout(chime,reduced?0:640);
+    }
+    if(n>=3)$("tSelect").classList.add("lit");
+    if(n>=4){suggest.textContent="Reduce to 1 / week";suggest.className="fresh"}
+    if(n>=5){panel.style.display="";}
+    if(n===5)rowModel.classList.add("spot");
+    if(n===6)rowPolicy.classList.add("spot");
+    if(n>=7){
+      panel.style.display="none";week.style.display="";
+
+      slotFuture.classList.add("removed");
+      futureChips.innerHTML='<span class="chip warn strike">Scheduled</span><span class="chip warn">Withdrawn — frequency reduced</span>';
+    }
+
+    // Focus each demonstration on its relevant content at any viewport width.
+    var focusTarget=n>=7?week:n>=5?panel:n===1?llmOut:null;
+    var activeScreen=s.screen==="intake"?sIntake:sMonitor;
+    if(focusTarget){
+      var top=focusTarget.getBoundingClientRect().top-activeScreen.getBoundingClientRect().top;
+      activeScreen.scrollTop=Math.max(0,top-35);
+    }
+    capN.textContent="STEP "+(n+1)+" / "+scenes.length;
+    capT.textContent=s.t;capB.textContent=s.b;
+    railItems.forEach(function(li,k){li.classList.toggle("on",k===n);li.querySelector("button").setAttribute("aria-pressed",String(k===n));});
+    sIntake.setAttribute("aria-hidden",String(s.screen!=="intake"));sMonitor.setAttribute("aria-hidden",String(s.screen!=="monitor"));
+
+    // wait out the screen fade and panel scroll before aiming, or the cursor lands stale
+    clearTimeout(aimT);clearTimeout(clickT);
+    if(s.target){
+      aimT=setTimeout(function(){moveTo(s.target)},720);
+      clickT=setTimeout(click,1580);
+    }
+  }
+
+  function jump(n){i=n;apply(i);if(playing)schedule()}
+  function step(){i=(i+1)%scenes.length;apply(i);schedule()}
+  function schedule(){
+    clearTimeout(timer);
+    timer=setTimeout(step,scenes[i].hold+(reduced?1200:0));
+  }
+  function play(){playing=true;toggle.textContent="Pause";schedule()}
+  function stop(){playing=false;toggle.textContent="Play";clearTimeout(timer)}
+
+  toggle.addEventListener("click",function(){playing?stop():play()});
+  restart.addEventListener("click",function(){stop();i=0;apply(0);play()});
+
+  apply(0);
+  if(playing)timer=setTimeout(step,2400);else toggle.textContent="Play";
+})();
+</script>
+
+</body></html>
+</body></html>
