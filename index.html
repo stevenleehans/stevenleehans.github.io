@@ -11,9 +11,10 @@
   <meta property="og:url" content="https://stevenleehans.github.io/">
   <link rel="canonical" href="https://stevenleehans.github.io/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261014-datathon">
+  <link rel="stylesheet" href="styles.css?v=20261014-assistant">
   <title>Hans Lee | AI, Machine Learning & Data Platforms</title>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261014-assistant" defer></script>
+  <script src="assistant.js?v=20261014-assistant" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#intro">Skip to introduction</a>
@@ -34,6 +35,18 @@
         <p class="hero-description">I build data systems and machine learning solutions,<br class="desktop-break"> with careful validation and clear business outcomes.</p>
         <p class="hero-context">Monash University · Master of Data Science Research</p>
       </div>
+      <section class="assistant-box" aria-labelledby="assistant-greeting">
+        <p class="assistant-greeting" id="assistant-greeting"><span class="status-dot" aria-hidden="true"></span> Hi, I am Hans' personal AI assistant.</p>
+        <form id="assistant-form" class="assistant-form">
+          <label class="sr-only" for="assistant-question">Ask about Hans's projects, experience or achievements</label>
+          <input id="assistant-question" name="question" type="text" placeholder="Ask me about his projects, experience or achievements…" maxlength="600" autocomplete="off" required>
+          <button type="submit" id="assistant-submit">Ask <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="assistant-suggestions" aria-label="Suggested questions"><button type="button" data-question="What are Hans's recent Kaggle and CUHK achievements?">Competition achievements</button><button type="button" data-question="What was Team Lord Momo's result in the Inter-Uni Datathon?">The datathon</button><button type="button" data-question="What data platform and business analytics experience does Hans have?">Data experience</button></div>
+        <div class="assistant-conversation" id="assistant-conversation" role="log" aria-label="Conversation with Hans's AI assistant" aria-live="polite" hidden></div>
+        <div class="assistant-bottom"><small>Powered by Gemini 2.5 Flash · Questions are processed by Google.</small><button type="button" id="assistant-clear" hidden>Clear chat</button></div>
+        <p class="assistant-status" id="assistant-status" role="status" aria-live="polite"></p>
+      </section>
       <nav class="main-nav" aria-label="Portfolio">
         <a href="#intro">Intro</a>
         <a href="#resume">Résumé</a>

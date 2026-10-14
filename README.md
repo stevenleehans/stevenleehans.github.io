@@ -2,7 +2,7 @@
 
 Personal portfolio for [stevenleehans.github.io](https://stevenleehans.github.io/), built with HTML, CSS and JavaScript for GitHub Pages.
 
-The site includes an introduction, professional experience and education, competition achievements, eight selected projects, and contact links. Project search and category filters run in the browser. No analytics, account system or backend is required.
+The site includes an introduction, professional experience and education, competition achievements, eight selected projects, and contact links. Project search and category filters run in the browser. A Gemini 2.5 Flash portfolio assistant uses the separate Vercel backend in `assistant-api/`; the static portfolio remains hosted on GitHub Pages.
 
 ## Local preview
 
@@ -19,6 +19,14 @@ python3 -m http.server 8080
 - Project cards use `data-category` and `data-search` attributes for filtering.
 - Replace `assets/Hans-Lee-Resume.pdf` and its editable Word counterpart when updating the résumé.
 - GitHub Pages publishes the root of the `main` branch. The `.nojekyll` file keeps the site buildless.
+
+## Portfolio assistant
+
+`assistant.js` calls the public Vercel `/api/chat` endpoint. The backend holds `GEMINI_API_KEY` as a sensitive production environment variable. No API key belongs in browser code, repository files, URLs or build variables. Update the public knowledge in `assistant-api/lib/profile.js` alongside future résumé or project changes.
+
+The assistant accepts bounded questions and short conversation context, uses the model `gemini-2.5-flash`, and returns plain-text answers grounded in the public profile. It checks browser origin, handles preflight, applies request limits and keeps a small cache. Its in-memory traffic counters are per running function instance, not a durable global quota. Conversations are held only in the current page; submitted questions and recent context are sent to Google for generation. The app does not persist conversations or log their content.
+
+Deploy `assistant-api/` as the separate Vercel project; redeploy production after updating its source or secrets. Run its checks with `node --test test/chat.test.mjs`.
 
 ## Evidence and scope
 

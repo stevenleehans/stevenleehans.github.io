@@ -1,0 +1,7 @@
+{
+  "name": "hans-portfolio-assistant",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "22.x" },
+  "scripts": { "test": "node --test test/chat.test.mjs" }
+}
