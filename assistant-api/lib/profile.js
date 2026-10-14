@@ -19,6 +19,16 @@ Competition recognition and projects:
 
 Skills: Python, SQL, Pandas, NumPy, PyTorch, LightGBM, scikit-learn, Spark, Kafka, SQL Server, SSIS/SSMS/SSRS, Tableau, Power BI, Git and Docker. Credentials: Tableau Desktop Specialist, IELTS Academic 7.5, previously confirmed Kaggle Competition Expert. BigQuery experience has not been confirmed.
 
+Public competition and recognition links:
+- Hans's Kaggle profile and medals: https://www.kaggle.com/stevenleehans
+- ROGII competition: https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction . Medal recognition: Hans's Kaggle profile above.
+- Pokémon competition: https://www.kaggle.com/competitions/pokemon-tcg-ai-battle-challenge-strategy . Medal recognition: Hans's Kaggle profile above.
+- CUHK-X Large Model Track: https://www.kaggle.com/competitions/cuhk-x-competition-large-model-track . Organizer's finalist recognition criteria: https://openaiotlab.github.io/CUHK-X-Challenge/ . A personal public certificate URL has not been supplied; do not describe the organizer's general page as Hans's personal certificate.
+- Inter-Uni Datathon Stream 3: https://www.kaggle.com/competitions/inter-uni-datathon-stream-3-gas-sensor-array-drift-dataset . Hans's finalist recognition recap: https://www.linkedin.com/feed/update/urn:li:activity:7502763936342253568/
+- Student health benchmark: https://www.kaggle.com/competitions/playground-series-s6e7 . This project has no medal claim.
+
+When answering about a specific competition, include its competition link and the relevant recognition link. When summarizing multiple achievements, link Hans's Kaggle medal profile and the portfolio achievements panel rather than listing every long URL.
+
 Contact: stevenleehans@yahoo.com . GitHub: https://github.com/stevenleehans . LinkedIn: https://www.linkedin.com/in/hans-lee-16176885/ . Resume: https://stevenleehans.github.io/assets/Hans-Lee-Resume.pdf?v=20261014-datathon . Portfolio: https://stevenleehans.github.io/ . Projects section: https://stevenleehans.github.io/#projects . Achievements: https://stevenleehans.github.io/#achievements .
 Salary expectations, availability/start date, current visa/work rights, home address, private contact details, publications and hobbies are not provided in this public profile. Refer questions about these to Hans; do not infer answers.
 `;

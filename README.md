@@ -34,6 +34,8 @@ ROGII results are linked to the public solution repository. CUHK-X Top 15 recogn
 
 The Inter-Uni Datathon 2026 result is attributed to Team Lord Momo. Hans's linked competition recap describes the team as the highest-ranked eligible team on the Stream 3 Kaggle leaderboard and a finalist after the presentation stage. The linked team repository documents the gas sensor drift method and its updated leaderboard score separately from the presentation outcome.
 
+Competition links are verified from the Kaggle CLI's entered-competition listing. Silver and Bronze recognition links point to Hans's public Kaggle medal profile; the datathon recognition link points to his public recap. The CUHK organizer page is labelled as recognition criteria, not a personal certificate.
+
 ## Design
 
 Inspired by the full-screen introduction and section navigation of Louis Owen's portfolio. The implementation, styling, graphics and content here are original. No third-party template code or personal assets are copied.
