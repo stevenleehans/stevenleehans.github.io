@@ -16,8 +16,9 @@ Competition recognition and projects:
 6. Traffic accident analytics, Monash, 2026: Spark Structured Streaming, Kafka, PySpark and Docker. Windowed aggregations, watermarking, checkpointing and dashboards for severity, regions and temporal trends. University project.
 7. Master's AI nudging system research: technical-feasibility study using synthetic data and simulation. Policy comparison, interaction outcomes, message burden, uncertainty and reproducibility. Does not establish clinical efficacy or live-user benefit.
 8. Student health risk Kaggle Playground benchmark: fixed five-fold OOF balanced accuracy 0.950636; missing-data investigation, target encoding, RealMLP and gradient-boosting blends. This is a dataset benchmark rather than a clinical risk model. https://github.com/stevenleehans/predicting-student-health-risk-s6e7
+9. Food delivery accessibility visualisation, Monash FIT5147 coursework: D3.js time-series, order-value histogram and stacked cost comparison, a TopoJSON world map with seven scroll-driven scenes, animations, tooltips and caption controls. Loads CSV and Excel in the browser. Uses historical snapshots, transformed trends and illustrative delivery-fee estimates; not current prices or a validated economic study. Live demo: https://stevenleehans.github.io/food-delivery-visualisation/ . Source: https://github.com/stevenleehans/food-delivery-visualisation
 
-Skills: Python, SQL, Pandas, NumPy, PyTorch, LightGBM, scikit-learn, Spark, Kafka, SQL Server, SSIS/SSMS/SSRS, Tableau, Power BI, Git and Docker. Credentials: Tableau Desktop Specialist, IELTS Academic 7.5, previously confirmed Kaggle Competition Expert. BigQuery experience has not been confirmed.
+Skills: D3.js, JavaScript, data visualisation, Python, SQL, Pandas, NumPy, PyTorch, LightGBM, scikit-learn, Spark, Kafka, SQL Server, SSIS/SSMS/SSRS, Tableau, Power BI, Git and Docker. Credentials: Tableau Desktop Specialist, IELTS Academic 7.5, previously confirmed Kaggle Competition Expert. BigQuery experience has not been confirmed.
 
 Public competition and recognition links:
 - Hans's Kaggle profile and medals: https://www.kaggle.com/stevenleehans
