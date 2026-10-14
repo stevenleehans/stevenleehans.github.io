@@ -17,3 +17,5 @@
 .evidence-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0 0}.project-evidence{display:flex;gap:8px 16px;flex-wrap:wrap;margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid rgba(218,236,234,.1)}.project-evidence .text-link{font-size:10px}a.award-badge:hover,a.tag:hover{background:var(--soft)}
 
 .project-art.visualisation img{width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:.8}.project-art.visualisation:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#173039e8)}.project-art.visualisation>span:last-child{color:#d4ece6}
+
+.project-art.warehouse{background:linear-gradient(120deg,#193541,#25484b)}.project-art.migration{background:linear-gradient(120deg,#253c43,#314746)}.project-art.market-research{background:linear-gradient(120deg,#263c47,#263d35)}.project-art.warehouse svg,.project-art.migration svg,.project-art.market-research svg{stroke:#91bcb9;stroke-width:1.6}.industry-tag{color:#bfd5d9;border-color:#73979f}

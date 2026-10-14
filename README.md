@@ -2,7 +2,7 @@
 
 Personal portfolio for [stevenleehans.github.io](https://stevenleehans.github.io/), built with HTML, CSS and JavaScript for GitHub Pages.
 
-The site includes an introduction, professional experience and education, competition achievements, nine selected projects, and contact links. Project search and category filters run in the browser. A Gemini 2.5 Flash portfolio assistant uses the separate Vercel backend in `assistant-api/`; the static portfolio remains hosted on GitHub Pages.
+The site includes an introduction, professional experience and education, competition achievements, twelve selected projects, and contact links. Project search and category filters run in the browser. A Gemini 2.5 Flash portfolio assistant uses the separate Vercel backend in `assistant-api/`; the static portfolio remains hosted on GitHub Pages.
 
 ## Local preview
 
@@ -41,3 +41,5 @@ Competition links are verified from the Kaggle CLI's entered-competition listing
 Inspired by the full-screen introduction and section navigation of Louis Owen's portfolio. The implementation, styling, graphics and content here are original. No third-party template code or personal assets are copied.
 
 The food-delivery visualisation is hosted as a separate [live D3.js project](https://stevenleehans.github.io/food-delivery-visualisation/) with [public source and data notes](https://github.com/stevenleehans/food-delivery-visualisation). It demonstrates interactive charts and scrollytelling with historical inputs and estimates.
+
+Nutrifood industry case studies cover the warehouse designed and built from scratch, the migration of 100+ reports from QlikView to Tableau, and the related application-data integration for ATL/BTL market research. The research use case is explicitly part of the warehouse build. Descriptions use Hans’s confirmed scope and existing résumé facts. Industry work can be filtered separately; the cards link to professional experience and contact rather than internal company assets.
