@@ -47,5 +47,13 @@ for (const button of filterButtons) button.addEventListener('click', () => {
   filterProjects();
 });
 search?.addEventListener('input', filterProjects);
+// A project deep link should also work after a visitor filters the grid.
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  const target = link && cards.find(card => `#${card.id}` === link.getAttribute('href'));
+  if (!target?.hidden) return;
+  search.value = '';
+  filterButtons.find(button => button.dataset.filter === 'all')?.click();
+});
 const year = document.getElementById('year');
 if (year) year.textContent = String(new Date().getFullYear());

@@ -50,3 +50,31 @@
 .kaggle-ranks dd span{display:block;font-size:12px;color:var(--muted)}
 .kaggle-standing .ranking-note{font-size:10px;color:var(--muted);margin:0}
 @media(max-width:480px){.kaggle-standing{padding:16px}.kaggle-ranks{gap:12px}.kaggle-ranks dd{font-size:26px}}
+
+/* Technical Arsenal: shared by the portfolio and readable profile. */
+.arsenal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:24px 0}
+.arsenal-card{min-width:0;padding:27px;border:1px solid #bdd4ff24;border-radius:18px;background:linear-gradient(145deg,#111a2be8,#0c1321e8);position:relative;overflow:hidden}
+.arsenal-card>header,.arsenal-wide article>header{display:flex;align-items:center;gap:15px;margin-bottom:28px}
+.arsenal-card header h4{margin:0;font-size:19px;font-weight:500;line-height:1.4;letter-spacing:-.3px}
+.arsenal-icon{display:grid;place-items:center;width:43px;height:43px;flex-shrink:0;color:#99c3ff;background:#83b4ff0c;border:1px solid #83b4ff33;border-radius:12px}
+.arsenal-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.arsenal-list{list-style:none;padding:0;margin:0;display:grid;gap:14px;font-size:13px;color:var(--muted);line-height:1.7}
+.arsenal-list li{padding-left:18px;position:relative}
+.arsenal-list li:before{content:'';height:5px;width:5px;border-radius:50%;background:#8bbaff;position:absolute;left:0;top:9px}
+.arsenal-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.arsenal-chips li{font-size:12px;line-height:1.5;padding:5px 10px;border-radius:6px;border:1px solid #bdd4ff26;background:#bdd4ff08;color:#c2cee2}
+.arsenal-learning{display:block;border-top:1px solid #bdd4ff18;padding-top:15px;margin-top:23px;font-size:10px;line-height:1.7;color:var(--accent)}
+.arsenal-learning:hover{text-decoration:underline;text-underline-offset:3px}
+.arsenal-wide{grid-column:1/-1;display:grid;grid-template-columns:1.25fr 1fr;gap:35px}
+.arsenal-wide article{min-width:0}.arsenal-wide article+article{border-left:1px solid #bdd4ff1a;padding-left:35px}
+.arsenal-card p{color:var(--muted);font-size:13px;line-height:1.85;margin:0 0 18px}
+.arsenal-card .arsenal-caption{font-size:11px;margin:19px 0 0}
+.arsenal-analytics{font-size:12px;color:var(--muted);margin:0 0 24px;line-height:1.9}
+.arsenal-analytics strong{color:var(--text);font-weight:500}
+.project-method{font-size:12px;color:var(--muted);line-height:1.85;padding-left:20px;margin:14px 0}
+.project-method li+li{margin-top:10px}
+.project-body .project-credit{font-size:10px;line-height:1.8;margin:18px 0 0;color:var(--muted)}
+.project-credit a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+#rsna-knee{scroll-margin-top:110px}
+@media(max-width:950px){.arsenal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.arsenal-grid>.arsenal-card:nth-child(3){grid-column:1/-1}.arsenal-card{padding:24px}}
+@media(max-width:600px){.arsenal-grid{grid-template-columns:1fr;gap:14px}.arsenal-wide{grid-template-columns:1fr;gap:25px}.arsenal-wide article+article{border-left:0;border-top:1px solid #bdd4ff1a;padding:25px 0 0}.arsenal-card header h4{font-size:18px}.arsenal-card>header,.arsenal-wide article>header{margin-bottom:22px}}
