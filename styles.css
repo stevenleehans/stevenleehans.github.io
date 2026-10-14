@@ -78,3 +78,10 @@
 #rsna-knee{scroll-margin-top:110px}
 @media(max-width:950px){.arsenal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.arsenal-grid>.arsenal-card:nth-child(3){grid-column:1/-1}.arsenal-card{padding:24px}}
 @media(max-width:600px){.arsenal-grid{grid-template-columns:1fr;gap:14px}.arsenal-wide{grid-template-columns:1fr;gap:25px}.arsenal-wide article+article{border-left:0;border-top:1px solid #bdd4ff1a;padding:25px 0 0}.arsenal-card header h4{font-size:18px}.arsenal-card>header,.arsenal-wide article>header{margin-bottom:22px}}
+
+.project-writeup{display:block;margin:0 0 20px;padding:17px 18px;border:1px solid #83b4ff40;border-radius:12px;background:#83b4ff0b;transition:background .2s,border-color .2s}
+.project-writeup:hover{background:#83b4ff16;border-color:#83b4ff80}
+.project-writeup>span{display:block;font-size:8px;letter-spacing:1.6px;color:var(--accent);margin-bottom:7px}
+.project-writeup strong{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:500;color:var(--text);line-height:1.6}
+.project-writeup small{display:block;font-size:11px;color:var(--muted);margin-top:4px;line-height:1.7}
+#rogii-geology{scroll-margin-top:110px}

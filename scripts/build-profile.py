@@ -41,7 +41,7 @@ html = '''<!doctype html>
 <meta property="og:url" content="https://stevenleehans.github.io/profile/">
 <meta property="og:image" content="https://stevenleehans.github.io/assets/social-preview.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://stevenleehans.github.io/assets/social-preview.png">
-<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css?v=20261015-arsenal-rsna">
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css?v=20261015-lakehouse-writeup">
 <script type="application/ld+json">SCHEMA</script>
 </head><body class="public-profile">
 <a class="skip-link" href="#profile-content">Skip to profile</a><div class="backdrop" aria-hidden="true"></div>
