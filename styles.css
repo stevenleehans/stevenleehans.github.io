@@ -23,6 +23,8 @@
 .credential-list{list-style:none;margin:14px 0 22px;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}.credential-list li{padding:13px 0;border-bottom:1px solid var(--line)}.credential-list a{display:block}.credential-list strong{display:block;font-size:14px;color:var(--text);font-weight:500}.credential-list span{display:block;font-size:10px;margin-top:4px;color:var(--muted)}.credential-list a:hover strong{color:var(--accent)}.planned-credentials{margin:14px 0 30px;padding:0 0 15px;border-bottom:1px solid var(--line)}.planned-credentials h4{font-size:13px;font-weight:500;margin:0 0 8px}.planned-credentials p{font-size:12px;color:var(--muted);margin:0 0 6px}.planned-credentials small{font-size:10px;color:var(--muted)}.project-credential{display:inline-flex;gap:12px;padding:6px 9px;border:1px solid var(--line);border-radius:3px;font-size:10px;color:var(--accent);margin:0 0 16px}.project-credential:hover{background:var(--soft)}
 /* Introduction: dated competition ranking and profile link. */
 .inline-link{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.skill-list .impact-grid{border:0;margin:14px 0 0;padding:8px 0}
+.skill-list .impact-grid strong{white-space:nowrap;flex-shrink:0}
 .kaggle-standing{border:1px solid var(--line);border-radius:4px;padding:20px 22px;margin:24px 0;background:var(--soft)}
 .kaggle-standing-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .kaggle-standing-heading .eyebrow{font-size:9px;letter-spacing:1.5px}
