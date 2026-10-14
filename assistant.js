@@ -10,6 +10,24 @@ const assistantClear = document.getElementById('assistant-clear');
 const assistantSuggestions = Array.from(document.querySelectorAll('[data-question]'));
 let assistantHistory = [];
 let assistantBusy = false;
+const assistantToggle = document.getElementById('assistant-toggle');
+const assistantPopover = document.getElementById('assistant-popover');
+const assistantClose = document.getElementById('assistant-close');
+function setCompanionOpen(open, focus = true) {
+  assistantPopover.hidden = !open;
+  assistantToggle.setAttribute('aria-expanded', String(open));
+  assistantToggle.setAttribute('aria-label', open ? "Close Hans's AI companion" : "Open Hans's AI companion");
+  if (focus) (open ? assistantQuestion : assistantToggle).focus();
+}
+assistantToggle.addEventListener('click', () => setCompanionOpen(assistantPopover.hidden));
+assistantClose.addEventListener('click', () => setCompanionOpen(false));
+document.querySelectorAll('[data-open-assistant]').forEach(button => button.addEventListener('click', () => setCompanionOpen(true)));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !assistantPopover.hidden) {
+    event.preventDefault();
+    setCompanionOpen(false);
+  }
+});
 
 function addMessage(role, text) {
   assistantConversation.hidden = false;
@@ -43,6 +61,8 @@ async function askAssistant(question) {
   question = question.trim();
   if (!question || assistantBusy) return;
   assistantBusy = true;
+  setCompanionOpen(true, false);
+  assistantToggle.classList.add("is-thinking");
   assistantSubmit.disabled = true;
   assistantSuggestions.forEach(button => button.disabled = true);
   assistantClear.disabled = true;
@@ -67,6 +87,7 @@ async function askAssistant(question) {
     assistantQuestion.value = question;
   } finally {
     assistantBusy = false;
+    assistantToggle.classList.remove("is-thinking");
     assistantSubmit.disabled = false;
     assistantSuggestions.forEach(button => button.disabled = false);
     assistantClear.disabled = false;

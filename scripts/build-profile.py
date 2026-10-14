@@ -46,8 +46,8 @@ html = '''<!doctype html>
 </head><body class="public-profile">
 <a class="skip-link" href="#profile-content">Skip to profile</a><div class="backdrop" aria-hidden="true"></div>
 <div class="profile-document"><header class="profile-header"><a class="wordmark" href="../" aria-label="Hans Lee portfolio home">HL<span class="wordmark-dot">.</span></a><a class="text-link" href="../">Interactive portfolio ↗</a></header>
-<main id="profile-content"><p class="eyebrow">PROFESSIONAL PROFILE · MELBOURNE, AUSTRALIA</p><h1>Hans Lee</h1>
-<p class="lead">Kaggle Competition Expert · AI, machine learning and enterprise data</p>
+<main id="profile-content"><div class="profile-heading"><div><p class="eyebrow">PROFESSIONAL PROFILE · MELBOURNE, AUSTRALIA</p><h1>Hans Lee</h1>
+<p class="lead">Kaggle Competition Expert · AI, machine learning and enterprise data</p></div><img class="profile-photo" src="../assets/hans-portrait.jpg" width="768" height="1024" alt="Hans Lee smiling while holding his dog"></div>
 <nav class="profile-navigation" aria-label="Profile sections"><a href="#intro">About</a><a href="#resume">Experience</a><a href="#achievements">Recognition</a><a href="#projects">Projects</a></nav>
 SECTIONS
 </main><footer class="profile-footer"><a href="https://www.linkedin.com/in/hans-l-16176885/" rel="me">LinkedIn</a><a href="https://www.kaggle.com/stevenleehans" rel="me">Kaggle</a><a href="https://github.com/stevenleehans" rel="me">GitHub</a><a href="mailto:stevenleehans@yahoo.com">Email Hans</a><p>Last updated 14 October 2026.</p></footer></div>
