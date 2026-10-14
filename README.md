@@ -2,7 +2,7 @@
 
 Personal portfolio for [stevenleehans.github.io](https://stevenleehans.github.io/), built with HTML, CSS and JavaScript for GitHub Pages.
 
-The site includes an introduction, professional experience and education, competition achievements, seven selected projects, and contact links. Project search and category filters run in the browser. No analytics, account system or backend is required.
+The site includes an introduction, professional experience and education, competition achievements, eight selected projects, and contact links. Project search and category filters run in the browser. No analytics, account system or backend is required.
 
 ## Local preview
 
@@ -23,6 +23,8 @@ python3 -m http.server 8080
 ## Evidence and scope
 
 ROGII results are linked to the public solution repository. CUHK-X Top 15 recognition and the invitation to a poster presentation are based on Hans's confirmed account; the site does not claim Top 6 participation. Recommendation results are held-out model evaluations. The thesis uses synthetic conditions; the student-health classification project is a Kaggle benchmark.
+
+The Inter-Uni Datathon 2026 result is attributed to Team Lord Momo. Hans's linked competition recap describes the team as the highest-ranked eligible team on the Stream 3 Kaggle leaderboard and a finalist after the presentation stage. The linked team repository documents the gas sensor drift method and its updated leaderboard score separately from the presentation outcome.
 
 ## Design
 
