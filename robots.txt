@@ -1,3 +1,20 @@
+# Public portfolio pages are open to search engines and AI search retrieval.
 User-agent: *
+Disallow: /assistant-api/
+Disallow: /scripts/
+Disallow: /README.md
 Allow: /
+
+User-agent: OAI-SearchBot
+Disallow: /assistant-api/
+Disallow: /scripts/
+Disallow: /README.md
+Allow: /
+
+User-agent: ChatGPT-User
+Disallow: /assistant-api/
+Disallow: /scripts/
+Disallow: /README.md
+Allow: /
+
 Sitemap: https://stevenleehans.github.io/sitemap.xml
