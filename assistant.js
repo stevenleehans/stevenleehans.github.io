@@ -27,7 +27,7 @@ function addMessage(role, text) {
     const raw = match[0].replace(/[),.;]+$/, '');
     const anchor = document.createElement('a');
     let allowed = false;
-    try { allowed = ['stevenleehans.github.io','github.com','www.linkedin.com','openaiotlab.github.io','www.kaggle.com','kaggle.com'].includes(new URL(raw).hostname); } catch { /* Keep malformed links as text. */ }
+    try { allowed = ['stevenleehans.github.io','github.com','www.linkedin.com','openaiotlab.github.io','www.kaggle.com','kaggle.com','www.salesforce.com','salesforce.com'].includes(new URL(raw).hostname); } catch { /* Keep malformed links as text. */ }
     if (allowed) { anchor.href=raw;anchor.target='_blank';anchor.rel='noopener noreferrer';anchor.textContent=raw;content.append(anchor); }
     else content.append(document.createTextNode(raw));
     content.append(document.createTextNode(match[0].slice(raw.length)));
