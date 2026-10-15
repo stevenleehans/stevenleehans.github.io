@@ -85,3 +85,6 @@
 .project-writeup strong{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:500;color:var(--text);line-height:1.6}
 .project-writeup small{display:block;font-size:11px;color:var(--muted);margin-top:4px;line-height:1.7}
 #rogii-geology{scroll-margin-top:110px}
+
+/* Fraud lakehouse: original, dated Databricks workspace evidence. */
+.project-art.lakehouse-screenshot{display:block;position:relative;overflow:hidden;background:#10161c}.project-art.lakehouse-screenshot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%}.project-art.lakehouse-screenshot:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#0b1429e8)}.project-art.lakehouse-screenshot>span:last-child{z-index:1;color:#edf3ff}

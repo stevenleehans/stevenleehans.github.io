@@ -23,10 +23,10 @@
   <meta name="twitter:image" content="https://stevenleehans.github.io/assets/social-preview.png">
   <link rel="canonical" href="https://stevenleehans.github.io/">
   <link rel="icon" href="assets/favicon.svg?v=20261014-dark-navy" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261015-lakehouse-writeup">
-  <link rel="stylesheet" href="portfolio.css?v=20261015-lakehouse-writeup">
+  <link rel="stylesheet" href="styles.css?v=20261016-lakehouse-gallery">
+  <link rel="stylesheet" href="portfolio.css?v=20261016-lakehouse-gallery">
   <title>Hans Lee | Kaggle Competition Expert &amp; Data Professional</title>
-  <script src="script.js?v=20261015-lakehouse-writeup" defer></script>
+  <script src="script.js?v=20261016-lakehouse-gallery" defer></script>
   <script src="assistant.js?v=20261014-pet" defer></script>
   <script type="application/ld+json">
 {
@@ -55,7 +55,10 @@
         "SQL Server",
         "Tableau",
         "Amazon S3",
-        "Medallion lakehouse architecture"
+        "Medallion lakehouse architecture",
+        "Databricks",
+        "Delta Lake",
+        "MLflow"
       ],
       "homeLocation": {
         "@type": "Place",
@@ -139,7 +142,7 @@
       <p class="arsenal-analytics"><strong>Analytics &amp; delivery</strong> · Tableau, Power BI, commercial analysis, data quality and stakeholder communication.</p>
       <dl class="skill-list">
         <div><dt>Enterprise data warehouse / data governance</dt><dd>
-          <p class="lakehouse-poc"><strong>Real-time mobile payment fraud detection lakehouse POC</strong> · Databricks, Amazon S3 storage and medallion architecture: bronze (raw data), silver (cleaned and validated data) and gold (curated for analytics).</p>
+          <p class="lakehouse-poc"><strong>Real-time mobile payment fraud detection lakehouse POC</strong> · Databricks, Amazon S3 storage and medallion architecture: bronze (raw data), silver (cleaned and validated data) and gold (curated for analytics). <a class="text-link" href="#payment-fraud-lakehouse">Explore the project ↗</a></p>
           <p class="enterprise-evidence-label">Nutrifood enterprise reporting</p>
           <div class="impact-grid">
             <div><strong>100M+</strong><span>historical rows in enterprise reporting</span></div>
@@ -157,7 +160,7 @@
       <a class="project-credential" href="https://www.salesforce.com/trailblazer/kaxkmwq57txtlq95j1" target="_blank" rel="noopener noreferrer">Tableau Desktop Specialist <span aria-hidden="true">↗</span></a>
       <p class="lead">Industry projects at Nutrifood, alongside my machine learning, research and visualisation work.</p>
       <div class="project-controls"><div class="filters" aria-label="Filter projects"><button type="button" class="active" data-filter="all" aria-pressed="true">All work</button><button type="button" data-filter="industry" aria-pressed="false">Industry work</button><button type="button" data-filter="ml" aria-pressed="false">AI & ML</button><button type="button" data-filter="data" aria-pressed="false">Data systems</button><button type="button" data-filter="viz" aria-pressed="false">Visualisation</button><button type="button" data-filter="research" aria-pressed="false">Research</button></div><label class="search-label"><span class="sr-only">Search projects</span><input id="project-search" type="search" placeholder="Search projects or skills" autocomplete="off"></label></div>
-      <p id="project-count" class="project-count" role="status" aria-live="polite">13 projects</p>
+      <p id="project-count" class="project-count" role="status" aria-live="polite">14 projects</p>
       <div class="project-grid">
         <article id="nutrifood-warehouse" class="project-card" data-category="industry data" data-search="nutrifood enterprise data warehouse design build from scratch oracle erp sales marketing application app sql server ssis etl research 10 million daily 400 distributors 1 million customers">
           <div class="project-art warehouse" aria-hidden="true"><svg viewBox="0 0 480 125"><rect x="35" y="18" width="72" height="20" rx="3"/><rect x="35" y="48" width="72" height="20" rx="3"/><rect x="35" y="78" width="72" height="20" rx="3"/><path d="M107 28h30v30h55M107 58h85M107 88h30V58"/><ellipse cx="240" cy="42" rx="48" ry="12"/><path d="M192 42v40c0 16 96 16 96 0V42M192 64c0 16 96 16 96 0M288 58h65"/><rect x="353" y="32" width="88" height="54" rx="4"/><path d="M369 71V58m18 13V48m18 23V42m18 29V53"/></svg><span>ERP + SALES + MARKETING</span></div>
@@ -170,6 +173,10 @@
         <article id="nutrifood-market-research" class="project-card" data-category="industry data" data-search="nutrifood market research department atl btl above below line marketing application app integration reporting analytics roi return investment tvc non tv advertising buy one get one promotion distribution channel tableau sql">
           <div class="project-art market-research" aria-hidden="true"><svg viewBox="0 0 480 125"><rect x="48" y="20" width="55" height="77" rx="7"/><path d="M60 36h30m-30 12h30m-30 12h22M103 58h50m14-15 15 15-15 15"/><rect x="182" y="30" width="115" height="57" rx="5"/><path d="M197 47h85m-85 12h65m-65 12h76M297 58h49"/><circle cx="378" cy="58" r="27"/><path d="M378 31v27h27M378 58l-19 19"/></svg><span>MARKET RESEARCH DATA FOUNDATION</span></div>
           <div class="project-body"><span class="tag industry-tag">PT Nutrifood Indonesia · Industry work</span><h3>Market research data integration</h3><p>Connected app-based ATL and BTL marketing data with sales reporting to support campaign ROI analysis and distribution-channel decisions.</p><div class="project-metric"><strong>Marketing ROI</strong><span>Campaign comparison · Distribution-channel decisions</span></div><div class="tech-tags"><span>SQL Server</span><span>Tableau</span><span>Marketing analytics</span></div><details><summary>Research use case</summary><p>This research use case formed part of the warehouse build. I integrated data covering ATL activity such as television commercials and non-TV advertising, and BTL promotions such as buy-one-get-one offers, with sales and marketing sources.</p><p>The analysis supported decisions about where marketing generated the most ROI and which distribution channels to prioritise. ATL refers to above-the-line activity and BTL to below-the-line activity.</p></details><div class="project-evidence"><a class="text-link" href="#resume">Professional experience <span aria-hidden="true">→</span></a><a class="text-link" href="mailto:stevenleehans@yahoo.com?subject=Nutrifood%20market-research%20project">Discuss this project <span aria-hidden="true">↗</span></a></div></div>
+        </article>
+        <article id="payment-fraud-lakehouse" class="project-card" data-category="data ml" data-search="real time mobile payment fraud detection databricks delta lakehouse bronze silver gold medallion aws amazon s3 unity catalog pyspark mlflow serving endpoint monitoring drift paysim feature contract dashboards simulation">
+          <a class="project-art lakehouse-screenshot" href="projects/payment-fraud-lakehouse/" aria-label="Explore the fraud detection lakehouse case study"><img src="assets/lakehouse/drift-dashboard.png" width="1280" height="720" alt="Recorded Databricks fraud drift dashboard with separate feature, score and performance signals" loading="lazy"><span>RECORDED DATABRICKS WORKSPACE</span></a>
+          <div class="project-body"><span class="tag">Data engineering &amp; ML POC</span><h3>Real-time mobile payment fraud detection lakehouse POC</h3><p>Built a Databricks lakehouse that takes synthetic payment transactions from raw ingestion to curated features, model serving and monitoring dashboards.</p><div class="project-metric"><strong>Bronze → Silver → Gold</strong><span>Delta tables · Unity Catalog · 14 pre-transaction model features</span></div><div class="tech-tags"><span>Databricks</span><span>Delta Lake</span><span>PySpark</span><span>MLflow</span><span>AWS S3</span></div><details><summary>Architecture &amp; engineering</summary><p>Bronze preserves raw input with an explicit schema and ingestion audit. Silver applies data-quality rules and keeps rejected records with reasons. Gold defines a feature contract that excludes post-transaction information. The ML workflow uses chronological splits, MLflow tracking and Unity Catalog registration, followed by a scoring endpoint, drift tables and three SQL dashboards for monitoring, simulated financial impact and operational replay.</p><p>The POC uses synthetic PaySim data. Ingestion and monitoring are batch-based; “real-time” refers to the scoring interface. Financial outcomes are simulation estimates. The source documents a previous Databricks execution; current live endpoint status was not reverified.</p><p>Local source validation: 488 tests passed; three optional MLflow tests skipped.</p></details><div class="project-evidence"><a class="text-link" href="projects/payment-fraud-lakehouse/">Case study &amp; screenshots <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/stevenleehans/databricks-fraud-lakehouse" target="_blank" rel="noopener noreferrer">GitHub repository <span aria-hidden="true">↗</span></a></div></div>
         </article>
         <article id="rsna-knee" class="project-card" data-category="ml research" data-search="rsna knee mri medical imaging dicom hugging face transformers open models pretrained dinov2 dinov3 rad dino coatnet pytorch fine tuning checkpoint inference deployment learning report labels">
           <div class="project-art medical-imaging" aria-hidden="true"><svg viewBox="0 0 480 125"><rect x="104" y="16" width="70" height="78" rx="8"/><rect x="205" y="16" width="70" height="78" rx="8"/><rect x="306" y="16" width="70" height="78" rx="8"/><path d="M130 25c-8 14-8 25 1 31l10 2c9-7 8-19 1-33m-9 35c-7 7-8 19-4 26m13-26c7 7 8 19 4 26M231 25c-8 14-8 25 1 31l10 2c9-7 8-19 1-33m-9 35c-7 7-8 19-4 26m13-26c7 7 8 19 4 26M332 25c-8 14-8 25 1 31l10 2c9-7 8-19 1-33m-9 35c-7 7-8 19-4 26m13-26c7 7 8 19 4 26"/></svg><span>OPEN MODELS · MRI · INFERENCE</span></div>

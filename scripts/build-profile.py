@@ -24,7 +24,7 @@ for section_id in ('intro', 'resume', 'achievements', 'projects'):
     content = re.sub(r'<p id="project-count".*?</p>', '', content, flags=re.S)
     content = re.sub(r'<p id="empty-results".*?</p>', '', content, flags=re.S)
     # Standalone page resources are one directory below the original homepage.
-    content = re.sub(r'(href|src)="(assets/|research/)', r'\1="../\2', content)
+    content = re.sub(r'(href|src)="(assets/|research/|projects/)', r'\1="../\2', content)
     content = content.replace('href="profile/"', 'href="../"').replace('Read full profile', 'Interactive portfolio')
     content = content.replace("Hello, I'm Hans.", 'About Hans Lee')
     sections.append(f'<section class="profile-section" id="{section_id}">{content}</section>')
@@ -41,7 +41,7 @@ html = '''<!doctype html>
 <meta property="og:url" content="https://stevenleehans.github.io/profile/">
 <meta property="og:image" content="https://stevenleehans.github.io/assets/social-preview.png">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://stevenleehans.github.io/assets/social-preview.png">
-<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css?v=20261015-lakehouse-writeup">
+<link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css?v=20261016-lakehouse-gallery">
 <script type="application/ld+json">SCHEMA</script>
 </head><body class="public-profile">
 <a class="skip-link" href="#profile-content">Skip to profile</a><div class="backdrop" aria-hidden="true"></div>
@@ -50,7 +50,7 @@ html = '''<!doctype html>
 <p class="lead">Kaggle Competition Expert · AI, machine learning and enterprise data</p></div><img class="profile-photo" src="../assets/hans-portrait.jpg" width="768" height="1024" alt="Hans Lee smiling while holding his dog"></div>
 <nav class="profile-navigation" aria-label="Profile sections"><a href="#intro">About</a><a href="#resume">Experience</a><a href="#achievements">Recognition</a><a href="#projects">Projects</a></nav>
 SECTIONS
-</main><footer class="profile-footer"><a href="https://www.linkedin.com/in/hans-l-16176885/" rel="me">LinkedIn</a><a href="https://www.kaggle.com/stevenleehans" rel="me">Kaggle</a><a href="https://github.com/stevenleehans" rel="me">GitHub</a><a href="mailto:stevenleehans@yahoo.com">Email Hans</a><p>Last updated 15 October 2026.</p></footer></div>
+</main><footer class="profile-footer"><a href="https://www.linkedin.com/in/hans-l-16176885/" rel="me">LinkedIn</a><a href="https://www.kaggle.com/stevenleehans" rel="me">Kaggle</a><a href="https://github.com/stevenleehans" rel="me">GitHub</a><a href="mailto:stevenleehans@yahoo.com">Email Hans</a><p>Last updated 16 October 2026.</p></footer></div>
 </body></html>'''
 html = html.replace('SCHEMA', json.dumps(schema, indent=2, ensure_ascii=False)).replace('SECTIONS', '\n'.join(sections))
 (ROOT / 'profile').mkdir(exist_ok=True)

@@ -2,7 +2,7 @@
 
 Personal portfolio for [stevenleehans.github.io](https://stevenleehans.github.io/), built with HTML, CSS and JavaScript for GitHub Pages.
 
-The site includes an introduction, professional experience and education, competition achievements, twelve selected projects, and contact links. Project search and category filters run in the browser. A Gemini 2.5 Flash portfolio assistant uses the separate Vercel backend in `assistant-api/`; the static portfolio remains hosted on GitHub Pages.
+The site includes an introduction, professional experience and education, competition achievements, fourteen selected projects, and contact links. Project search and category filters run in the browser. A Gemini 2.5 Flash portfolio assistant uses the separate Vercel backend in `assistant-api/`; the static portfolio remains hosted on GitHub Pages.
 
 ## Local preview
 
@@ -68,7 +68,7 @@ Indexing is not confirmed by publishing these files. Verify the URL-prefix prope
 
 ## Current portfolio design and AI companion
 
-Hans selected [Aura’s ML Engineer Portfolio template](https://www.aura.build/templates/act-like-a-profession-76), by BEREKET Tade, as the visual direction. The portfolio uses an original local implementation of that scrolling-page structure, adapted to Hans’s navy starfield, actual project evidence and supplied photograph. It keeps the existing section anchors and 13 project cards, with responsive navigation and filters. `portfolio.css` supplies the new presentation over the shared styles used by the readable profile.
+Hans selected [Aura’s ML Engineer Portfolio template](https://www.aura.build/templates/act-like-a-profession-76), by BEREKET Tade, as the visual direction. The portfolio uses an original local implementation of that scrolling-page structure, adapted to Hans’s navy starfield, actual project evidence and supplied photograph. It keeps the existing section anchors and 14 project cards, with responsive navigation and filters. `portfolio.css` supplies the new presentation over the shared styles used by the readable profile.
 
 The supplied portrait is published as `assets/hans-portrait.jpg` with compressed image pixels preserved and metadata removed. The AI assistant appears as a locally drawn astronaut-dog mascot. It opens a non-modal speech-bubble panel with keyboard close, focus return and reduced-motion support. Existing backend-only Gemini credentials, plain-text model rendering, source-link restrictions and rate limits remain in place. The assistant profile now includes the confirmed Databricks and Amazon S3 lakehouse POC and Hans’s interest in space.
 
@@ -77,3 +77,9 @@ The supplied portrait is published as `assets/hans-portrait.jpg` with compressed
 The Technical Arsenal groups Hans-confirmed tools into AI/ML, GenAI/LLMs, full-stack, data/databases and deployment cards. The enterprise warehouse/governance panel retains the Databricks and Amazon S3 medallion POC and Nutrifood impact figures. Additional toolkit items were confirmed directly by Hans on 15 October 2026; LinkedIn separately corroborates his enterprise data tools.
 
 The RSNA Knee project describes ongoing learning with Hugging Face Transformers, pretrained vision checkpoints, DICOM preprocessing, grouped validation and notebook inference. The public work link points to Hans’s already-published Kaggle report-label dataset. Private experiment notebooks, checkpoints and competition data are not published by this website update. The project credits the public community baselines and makes no clinical deployment or medal claim.
+
+The lakehouse project now has a dedicated card linked to the public `stevenleehans/databricks-fraud-lakehouse` source package. Its reviewed code covers Delta medallion tables, Unity Catalog, MLflow, serving and monitoring; PaySim and financial impact remain explicitly synthetic/simulated. The ROGII project and recognition section feature Hans’s supplied 158th-place Kaggle write-up URL.
+
+## Lakehouse case study and screenshots
+
+`projects/payment-fraud-lakehouse/` is the standalone project page. The homepage card and readable profile link to the case study and public GitHub source. Four unmodified workspace screenshots in `assets/lakehouse/` come from Hans’s original project report, captured 13 August 2026: successful job, Unity Catalog, drift dashboard and inference response. They show recorded evidence, not current endpoint health. Original screenshots are retained for full-size viewing; no customer transaction data or credentials are included. The page keeps synthetic-data, batch-ingestion, S3 storage-context and simulation boundaries explicit.
