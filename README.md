@@ -83,3 +83,5 @@ The lakehouse project now has a dedicated card linked to the public `stevenleeha
 ## Lakehouse case study and screenshots
 
 `projects/payment-fraud-lakehouse/` is the standalone project page. The homepage card and readable profile link to the case study and public GitHub source. Four unmodified workspace screenshots in `assets/lakehouse/` come from Hans’s original project report, captured 13 August 2026: successful job, Unity Catalog, drift dashboard and inference response. They show recorded evidence, not current endpoint health. Original screenshots are retained for full-size viewing; no customer transaction data or credentials are included. The page keeps synthetic-data, batch-ingestion, S3 storage-context and simulation boundaries explicit.
+
+The CUHK-X achievement also records ACM UbiComp / ISWC 2026 conference attendance on 13–15 October 2026, verified from a certificate issued to Hans Lee. Conference attendance is separate from competition-stage participation. A flattened, redacted certificate is published at `assets/CUHK-UbiComp-ISWC-2026-Attendance-Redacted.pdf`; its home address and registration confirmation number have been permanently removed.
