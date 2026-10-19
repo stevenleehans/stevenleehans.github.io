@@ -30,7 +30,7 @@ Deploy `assistant-api/` as the separate Vercel project; redeploy production afte
 
 ## Evidence and scope
 
-ROGII results are linked to the public solution repository. CUHK-X Top 15 recognition and the invitation to a poster presentation are based on Hans's confirmed account; the site does not claim Top 6 participation. Recommendation results are held-out model evaluations. The thesis uses synthetic conditions; the student-health classification project is a Kaggle benchmark.
+ROGII results are linked to the public solution repository. CUHK-X Top 15 recognition is supported by the official Finalist Award in `assets/CUHKX-2026-Large-Model-Finalist-Award.pdf`; the poster invitation is based on Hans's confirmed account; the site does not claim Top 6 participation. Recommendation results are held-out model evaluations. The thesis uses synthetic conditions; the student-health classification project is a Kaggle benchmark.
 
 The Inter-Uni Datathon 2026 result is attributed to Team Lord Momo. Hans's linked competition recap describes the team as the highest-ranked eligible team on the Stream 3 Kaggle leaderboard and a finalist after the presentation stage. The linked team repository documents the gas sensor drift method and its updated leaderboard score separately from the presentation outcome.
 
@@ -85,3 +85,5 @@ The lakehouse project now has a dedicated card linked to the public `stevenleeha
 `projects/payment-fraud-lakehouse/` is the standalone project page. The homepage card and readable profile link to the case study and public GitHub source. Four unmodified workspace screenshots in `assets/lakehouse/` come from Hans’s original project report, captured 13 August 2026: successful job, Unity Catalog, drift dashboard and inference response. They show recorded evidence, not current endpoint health. Original screenshots are retained for full-size viewing; no customer transaction data or credentials are included. The page keeps synthetic-data, batch-ingestion, S3 storage-context and simulation boundaries explicit.
 
 The CUHK-X achievement also records ACM UbiComp / ISWC 2026 conference attendance on 13–15 October 2026, verified from a certificate issued to Hans Lee. Conference attendance is separate from competition-stage participation. A flattened, redacted certificate is published at `assets/CUHK-UbiComp-ISWC-2026-Attendance-Redacted.pdf`; its home address and registration confirmation number have been permanently removed.
+
+The official CUHK-X 2026 Large Model Track Finalist Award confirms a Top 15 private-leaderboard finish and qualification for reproduction-code and live-verification stages. Qualification does not establish completion of those stages.
